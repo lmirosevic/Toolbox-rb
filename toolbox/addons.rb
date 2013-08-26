@@ -12,6 +12,27 @@ class Object
     end
 end
 
+class Hash
+    def symbolize_keys
+        _symbolize_keys(self)
+    end
+
+    def _symbolize_keys(hash)
+        hash.inject({}){|result, (key, value)|
+            new_key = case key
+                      when String then key.to_sym
+                      else key
+                      end
+            new_value = case value
+                        when Hash then _symbolize_keys(value)
+                        else value
+                        end
+            result[new_key] = new_value
+            result
+        }
+    end
+end
+
 class String
     def starts_with?(prefix)
         prefix = prefix.to_s
