@@ -6,6 +6,8 @@
 # Created by Luka Mirosevic on 20/08/2013.
 # Copyright (c) 2013 Goonbee. All rights reserved.
 
+require 'uri'
+
 module Goonbee
     module Toolbox
         class Util
